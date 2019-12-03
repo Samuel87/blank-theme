@@ -1,11 +1,11 @@
 <?php
 
-define('AJAX_NONCE', 'mytheme');
+define('AJAX_NONCE', 'theme');
 define('REST_NONCE', 'wp_rest');
 
-if (!function_exists('mytheme_setup'))
+if (!function_exists('theme_setup'))
 {
-    function mytheme_setup()
+    function theme_setup()
     {
         add_theme_support('post-thumbnails');
         add_theme_support('title-tag');
@@ -19,7 +19,7 @@ if (!function_exists('mytheme_setup'))
         /**
          * Actions
          */
-        add_action('wp_enqueue_scripts', 'mytheme_scripts');
+        add_action('wp_enqueue_scripts', 'theme_scripts');
 
         /**
          * Image sizes
@@ -38,18 +38,19 @@ if (!function_exists('mytheme_setup'))
         ajax_setup();
 	}
 }
-add_action('after_setup_theme', 'mytheme_setup');
+add_action('after_setup_theme', 'theme_setup');
 
 
 /**
  * Enqueue scripts and styles.
  */
-function mytheme_scripts()
+function theme_scripts()
 {
     $base_dir = get_template_directory_uri();
+    $ver = '1.0.0';
 
-	// wp_enqueue_style('mystyle', 'MY_URL', false);
-    // wp_enqueue_script('myscript', 'MY_URL', [], '1.0.0', true);
+	wp_enqueue_style('App Style', "{$base_dir}/public/app.css", [], $ver);
+    wp_enqueue_script('App', "{$base_dir}/public/app.js", [], $ver, true);
 }
 
 

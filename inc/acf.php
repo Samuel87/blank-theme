@@ -42,10 +42,10 @@ function acf_setup()
                 $slug_upper = strtoupper($lang);
 
                 acf_add_options_sub_page([
-                    'page_title' => "Theme Options ${$slug_upper}",
-                    'menu_title' => "Theme Options ${$slug_upper}",
-                    'menu_slug'  => "theme-options-${lang}",
-                    'post_id'    => "options-${lang}",
+                    'page_title' => "Theme Options {$slug_upper}",
+                    'menu_title' => "Theme Options {$slug_upper}",
+                    'menu_slug'  => "theme-options-{$lang}",
+                    'post_id'    => "options-{$lang}",
                     'parent'     => $parent['menu_slug']
                 ]);
             }
@@ -59,7 +59,7 @@ function acf_setup()
  */
 function get_options_field($field, $translated = true)
 {
-    $pll_slug = function_exists('pll_current_language') ? pll_current_language('slug') : null;
+    $lang = function_exists('pll_current_language') ? pll_current_language('slug') : null;
 
-    return get_field($field, $translated && $slug ? "options-${$pll_slug}" : 'options');
+    return get_field($field, $translated && $lang ? "options-{$lang}" : 'options');
 }

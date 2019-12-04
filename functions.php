@@ -24,9 +24,9 @@ if (!function_exists('theme_setup'))
         /**
          * Register menus
          */
-        register_nav_menus(array(
+        register_nav_menus([
             'primary' => esc_html__('Primary', 'theme'),
-        ));
+        ]);
 
         /**
          * Image sizes

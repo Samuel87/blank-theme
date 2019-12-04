@@ -22,6 +22,13 @@ if (!function_exists('theme_setup'))
         add_action('wp_enqueue_scripts', 'theme_scripts');
 
         /**
+         * Register menus
+         */
+        register_nav_menus(array(
+            'primary' => esc_html__('Primary', 'theme'),
+        ));
+
+        /**
          * Image sizes
          */
         add_image_size('full-HD', 1920, 1080, true);
